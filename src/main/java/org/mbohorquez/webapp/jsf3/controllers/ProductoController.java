@@ -84,13 +84,12 @@ public class ProductoController {
 
     public String guardar() {
         System.out.println(producto);
-        service.guardar(producto);
         if (producto.getId() != null && producto.getId() > 0) {
             facesContext.addMessage(null, new FacesMessage(String.format(bundle.getString("producto.mensaje.editar"), producto.getNombre())));
         } else {
-            facesContext.addMessage(null, new FacesMessage(String.format(bundle.getString("producto.mensaje.editar"), producto.getNombre())));
+            facesContext.addMessage(null, new FacesMessage(String.format(bundle.getString("producto.mensaje.crear"), producto.getNombre())));
         }
-
+        service.guardar(producto);
         return "index.xhtml?faces-redirect=true";
     }
 

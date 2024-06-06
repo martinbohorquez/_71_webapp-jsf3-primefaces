@@ -12,3 +12,5 @@ K
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+|
+Lsrc/main/java/org/mbohorquez/webapp/jsf3/controllers/ProductoController.java,5\8\588bbdde4397438ecbd86fc4c39cb9e5f7e6b775
