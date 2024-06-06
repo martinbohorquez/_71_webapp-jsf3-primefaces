@@ -6,16 +6,17 @@
                 template="/WEB-INF/layouts/main.xhtml">
 
     <ui:define name="content">
-        <p:panelGrid columns="1">
-            <f:facet name="header">
+        <p:card>
+            <f:facet name="title">
                 <h:outputText value="#{titulo}"/>
             </f:facet>
+            <p:divider/>
             <h:form id="crearForm">
                 <p:commandButton value="#{msg['navbar.texto.crear']}" action="form.xhtml" class="p-my-2"/>
             </h:form>
             <h:outputText value="#{msg['producto.texto.noExiste']}" rendered="#{empty listado}"
                           class="alert alert-warning"/>
-            <p:dataTable value="#{listado}" var="prod" rendered="#{not empty listado}">
+            <p:dataTable value="#{listado}" var="prod" rendered="#{not empty listado}" style="max-width:65%">
                 <p:column headerText="#{msg['producto.id']}">
                     <h:outputText value="#{prod.id}"/>
                 </p:column>
@@ -57,6 +58,6 @@
                     </h:form>
                 </p:column>
             </p:dataTable>
-        </p:panelGrid>
+        </p:card>
     </ui:define>
 </ui:composition>
