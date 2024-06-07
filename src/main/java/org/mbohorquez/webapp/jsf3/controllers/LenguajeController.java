@@ -25,7 +25,7 @@ public class LenguajeController implements Serializable {
     public void init() {
         locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
         lenguajesSoportados = new HashMap<>();
-        lenguajesSoportados.put("Ingles", "en");
+        lenguajesSoportados.put("English", "en");
         lenguajesSoportados.put("Español", "es");
     }
 
