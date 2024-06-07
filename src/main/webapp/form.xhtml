@@ -50,8 +50,7 @@
                                    style="width: 200px"/>
                     <div class="p-col">
                         <p:datePicker pattern="yyyy-MM-dd" id="fechaRegistro" value="#{producto.fechaRegistro}"
-                                      label="Fecha Registro"
-                                      converterMessage="Indique la fecha con yyyy-MM-dd">
+                                      label="Fecha Registro" converterMessage="Indique la fecha con yyyy-MM-dd">
                             <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
                             <f:passThroughAttribute name="type" value="date"/>
                         </p:datePicker>
@@ -81,7 +80,7 @@
                         <p:commandButton
                                 value="#{producto.id>0?msg['producto.boton.editar']:msg['producto.boton.crear']}"
                                 action="#{productoController.guardar}"
-                                class="ui-button-outlined ui-button-primary" ajax="false"/>
+                                class="ui-button-outlined ui-button-primary" update="@form"/>
                     </div>
                     <h:inputHidden value="#{producto.id}"/>
                 </div>

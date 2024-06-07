@@ -1,5 +1,6 @@
 package org.mbohorquez.webapp.jsf3.controllers;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.inject.Model;
 import jakarta.enterprise.inject.Produces;
@@ -33,6 +34,13 @@ public class ProductoController {
     @Inject
     private ResourceBundle bundle;
 
+    private List<Producto> listado;
+
+    @PostConstruct
+    public void init() {
+        this.listado = service.listar();
+    }
+
     @Produces
     @Model
     public String titulo() {
@@ -41,15 +49,15 @@ public class ProductoController {
     }
 
 
-    @Produces
+    /*@Produces
     @RequestScoped
     @Named("listado")
     public List<Producto> findAll() {
-        /*return Arrays.asList(new Producto("peras"),
+        *//*return Arrays.asList(new Producto("peras"),
                 new Producto("manzanas"),
-                new Producto("naranjas"));*/
+                new Producto("naranjas"));*//*
         return service.listar();
-    }
+    }*/
 
     @Produces
     @Model
@@ -79,7 +87,7 @@ public class ProductoController {
 
     public String editar(Long id) {
         this.id = id;
-        return "form.xhtml?id=" + id + "&faces-redirect=true";
+        return "form.xhtml";
     }
 
     public String guardar() {
@@ -90,13 +98,15 @@ public class ProductoController {
             facesContext.addMessage(null, new FacesMessage(String.format(bundle.getString("producto.mensaje.crear"), producto.getNombre())));
         }
         service.guardar(producto);
-        return "index.xhtml?faces-redirect=true";
+        listado = service.listar();
+        return "index.xhtml";
     }
 
-    public String eliminar(Producto producto) {
+    public void eliminar(Producto producto) {
         service.eliminar(producto.getId());
         facesContext.addMessage(null, new FacesMessage(String.format(bundle.getString("producto.mensaje.eliminar"), producto.getNombre())));
-        return "index.xhtml?faces-redirect=true";
+        listado = service.listar();
+//        return "index.xhtml";
     }
 
     public Long getId() {
@@ -107,4 +117,11 @@ public class ProductoController {
         this.id = id;
     }
 
+    public List<Producto> getListado() {
+        return listado;
+    }
+
+    public void setListado(List<Producto> listado) {
+        this.listado = listado;
+    }
 }

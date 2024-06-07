@@ -4,6 +4,11 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
                       https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
+
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>arya</param-value>
+    </context-param>
     <servlet>
         <servlet-name>faces-servlet-name</servlet-name>
         <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
