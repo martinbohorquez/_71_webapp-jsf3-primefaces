@@ -12,13 +12,13 @@ Este es un proyecto de aplicación web que implementa operaciones CRUD (Crear, L
 
 ## Tecnologías utilizadas
 
-![Jakarta EE](https://img.shields.io/badge/Jakarta%20EE-10.0.0-blue)
-![PrimeFaces](https://img.shields.io/badge/PrimeFaces-12.0.0-orange)
-![PrimeFlex](https://img.shields.io/badge/PrimeFlex-2.0.0-green)
-![Maven](https://img.shields.io/badge/Maven-3.9.6-yellow)
-![WildFly](https://img.shields.io/badge/WildFly-32.0.0.Final-red)
-![MySQL](https://img.shields.io/badge/MySQL-8.0.32-blueviolet)
-![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-2024.1.1-blue)
+[![Jakarta EE](https://img.shields.io/badge/Jakarta%20EE-10.0.0-blue)](https://jakarta.ee/)
+[![PrimeFaces](https://img.shields.io/badge/PrimeFaces-12.0.0-orange)](https://www.primefaces.org/)
+[![PrimeFlex](https://img.shields.io/badge/PrimeFlex-2.0.0-green)](https://primefaces.org/primeflex/)
+[![Maven](https://img.shields.io/badge/Maven-3.9.6-yellow)](https://maven.apache.org/)
+[![WildFly](https://img.shields.io/badge/WildFly-32.0.0.Final-red)](https://www.wildfly.org/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0.32-blueviolet)](https://www.mysql.com/)
+[![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-2024.1.1-blue)](https://www.jetbrains.com/idea/)
 
 ## Requisitos previos
 
