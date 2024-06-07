@@ -17,7 +17,7 @@ Este es un proyecto de aplicación web que implementa operaciones CRUD (Crear, L
 [![PrimeFlex](https://img.shields.io/badge/PrimeFlex-2.0.0-green)](https://primefaces.org/primeflex/)
 [![Maven](https://img.shields.io/badge/Maven-3.9.6-yellow)](https://maven.apache.org/)
 [![WildFly](https://img.shields.io/badge/WildFly-32.0.0.Final-red)](https://www.wildfly.org/)
-[![MySQL](https://img.shields.io/badge/MySQL-8.0.32-blueviolet)](https://www.mysql.com/)
+[![MySQL](https://img.shields.io/badge/MySQL%20Workbench-8.0.32-blueviolet)](https://www.mysql.com/products/workbench/)
 [![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-2024.1.1-blue)](https://www.jetbrains.com/idea/)
 
 ## Requisitos previos
