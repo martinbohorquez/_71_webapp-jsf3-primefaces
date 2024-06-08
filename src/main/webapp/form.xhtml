@@ -17,7 +17,7 @@
                     <p:outputLabel value="#{msg['producto.nombre']}" for="nombre" class="p-col-fixed"
                                    style="width: 200px"/>
                     <div class="p-col">
-                        <p:inputText id="nombre" value="#{producto.nombre}" label="Nombre"/>
+                        <p:inputText id="nombre" value="#{producto.nombre}" label="Nombre" placeholder="#{msg['producto.nombre']}"/>
                     </div>
                     <div class="p-col">
                         <p:message for="nombre" style="color:red"/>
@@ -28,7 +28,7 @@
                     <p:outputLabel value="#{msg['producto.precio']}" for="precio" class="p-col-fixed"
                                    style="width: 200px"/>
                     <div class="p-col">
-                        <p:inputText id="precio" value="#{producto.precio}" label="Precio"/>
+                        <p:inputText id="precio" value="#{producto.precio}" label="Precio" placeholder="#{msg['producto.precio']}"/>
                     </div>
                     <div class="p-col">
                         <p:message for="precio" style="color:red"/>
@@ -38,7 +38,7 @@
                 <div class="p-field p-grid">
                     <p:outputLabel value="#{msg['producto.sku']}" for="sku" class="p-col-fixed" style="width: 200px"/>
                     <div class="p-col">
-                        <p:inputText id="sku" value="#{producto.sku}" label="Sku"/>
+                        <p:inputText id="sku" value="#{producto.sku}" label="Sku" placeholder="#{msg['producto.sku']}"/>
                     </div>
                     <div class="p-col">
                         <p:message for="sku" style="color:red"/>
@@ -50,7 +50,8 @@
                                    style="width: 200px"/>
                     <div class="p-col">
                         <p:datePicker pattern="yyyy-MM-dd" id="fechaRegistro" value="#{producto.fechaRegistro}"
-                                      label="Fecha Registro" converterMessage="Indique la fecha con yyyy-MM-dd">
+                                      label="Fecha Registro" converterMessage="Indique la fecha con yyyy-MM-dd"
+                                      placeholder="#{msg['producto.fechaRegistro']}">
                             <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
                             <f:passThroughAttribute name="type" value="date"/>
                         </p:datePicker>
@@ -64,8 +65,9 @@
                     <p:outputLabel value="#{msg['producto.categoria']}" for="categoria" class="p-col-fixed"
                                    style="width: 200px"/>
                     <div class="p-col">
-                        <p:selectOneMenu id="categoria" value="#{producto.categoria}" label="Categoría">
-                            <f:selectItem itemLabel="--- seleccione una categoría---" itemValue="#{null}"/>
+                        <p:selectOneMenu id="categoria" value="#{producto.categoria}" label="Categoría"
+                                         filterPlaceholder="#{msg['producto.categoria']}">
+                            <f:selectItem itemLabel=" --- #{msg['categoria.seleccionar']} --- " itemValue="#{null}" style="color: #999"/>
                             <f:selectItems value="#{categorias}" var="cat" itemLabel="#{cat.nombre}"/>
                             <f:converter binding="#{categoriaConverter}"/>
                         </p:selectOneMenu>
