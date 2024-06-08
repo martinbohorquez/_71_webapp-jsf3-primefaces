@@ -5,6 +5,7 @@ import jakarta.inject.Inject;
 import org.mbohorquez.webapp.jsf3.models.entities.Categoria;
 import org.mbohorquez.webapp.jsf3.models.entities.Producto;
 import org.mbohorquez.webapp.jsf3.repositories.CrudRepository;
+import org.mbohorquez.webapp.jsf3.repositories.ProductoRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +13,7 @@ import java.util.Optional;
 @Stateless
 public class ProductoServiceImpl implements ProductoService {
     @Inject
-    private CrudRepository<Producto> productoRepository;
+    private ProductoRepository productoRepository;
     @Inject
     private CrudRepository<Categoria> categoriaRepository;
     @Override
@@ -43,5 +44,10 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public Optional<Categoria> porIdCategoria(Long id) {
         return Optional.ofNullable(categoriaRepository.porId(id));
+    }
+
+    @Override
+    public List<Producto> buscarPorNombre(String nombre) {
+        return productoRepository.buscarPorNombre(nombre);
     }
 }
