@@ -1,23 +1,15 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="jakarta.faces.html"
                 xmlns:f="jakarta.faces.core"
                 xmlns:ui="jakarta.faces.facelets"
-                xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/layouts/main.xhtml">
+                xmlns:p="http://primefaces.org/ui">
 
-    <ui:define name="content">
-        <f:metadata>
-            <f:viewParam name="id" value="#{productoController.id}"/>
-        </f:metadata>
-        <p:panel
-                header="#{producto.id>0?msg['producto.boton.editar']:msg['producto.boton.crear']} #{msg['producto.texto']}">
-            <p:linkButton outcome="index" value="#{msg['producto.boton.volver']}" class="p-my-2"/>
-            <h:form>
+            <h:form id="formProducto">
                 <div class="p-field p-grid">
                     <p:outputLabel value="#{msg['producto.nombre']}" for="nombre" class="p-col-fixed"
                                    style="width: 200px"/>
                     <div class="p-col">
-                        <p:inputText id="nombre" value="#{producto.nombre}" label="Nombre" placeholder="#{msg['producto.nombre']}"/>
+                        <p:inputText id="nombre" value="#{productoController.producto.nombre}" label="Nombre" placeholder="#{msg['producto.nombre']}"/>
                     </div>
                     <div class="p-col">
                         <p:message for="nombre" style="color:red"/>
@@ -28,7 +20,7 @@
                     <p:outputLabel value="#{msg['producto.precio']}" for="precio" class="p-col-fixed"
                                    style="width: 200px"/>
                     <div class="p-col">
-                        <p:inputText id="precio" value="#{producto.precio}" label="Precio" placeholder="#{msg['producto.precio']}"/>
+                        <p:inputText id="precio" value="#{productoController.producto.precio}" label="Precio" placeholder="#{msg['producto.precio']}"/>
                     </div>
                     <div class="p-col">
                         <p:message for="precio" style="color:red"/>
@@ -38,7 +30,7 @@
                 <div class="p-field p-grid">
                     <p:outputLabel value="#{msg['producto.sku']}" for="sku" class="p-col-fixed" style="width: 200px"/>
                     <div class="p-col">
-                        <p:inputText id="sku" value="#{producto.sku}" label="Sku" placeholder="#{msg['producto.sku']}"/>
+                        <p:inputText id="sku" value="#{productoController.producto.sku}" label="Sku" placeholder="#{msg['producto.sku']}"/>
                     </div>
                     <div class="p-col">
                         <p:message for="sku" style="color:red"/>
@@ -49,7 +41,7 @@
                     <p:outputLabel value="#{msg['producto.fechaRegistro']}" for="fechaRegistro" class="p-col-fixed"
                                    style="width: 200px"/>
                     <div class="p-col">
-                        <p:datePicker pattern="yyyy-MM-dd" id="fechaRegistro" value="#{producto.fechaRegistro}"
+                        <p:datePicker pattern="yyyy-MM-dd" id="fechaRegistro" value="#{productoController.producto.fechaRegistro}"
                                       label="Fecha Registro" converterMessage="Indique la fecha con yyyy-MM-dd"
                                       placeholder="#{msg['producto.fechaRegistro']}">
                             <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
@@ -65,7 +57,7 @@
                     <p:outputLabel value="#{msg['producto.categoria']}" for="categoria" class="p-col-fixed"
                                    style="width: 200px"/>
                     <div class="p-col">
-                        <p:selectOneMenu id="categoria" value="#{producto.categoria}" label="Categoría"
+                        <p:selectOneMenu id="categoria" value="#{productoController.producto.categoria}" label="Categoría"
                                          filterPlaceholder="#{msg['producto.categoria']}">
                             <f:selectItem itemLabel=" --- #{msg['categoria.seleccionar']} --- " itemValue="#{null}" style="color: #999"/>
                             <f:selectItems value="#{categorias}" var="cat" itemLabel="#{cat.nombre}"/>
@@ -80,13 +72,11 @@
                 <div class="p-field p-grid">
                     <div class="p-col">
                         <p:commandButton
-                                value="#{producto.id>0?msg['producto.boton.editar']:msg['producto.boton.crear']}"
+                                value="#{productoController.producto.id>0?msg['producto.boton.editar']:msg['producto.boton.crear']}"
                                 action="#{productoController.guardar}"
-                                class="ui-button-outlined ui-button-primary" update="@form"/>
+                                class="ui-button-outlined ui-button-primary" update="@form tabla"/>
                     </div>
-                    <h:inputHidden value="#{producto.id}"/>
+                    <h:inputHidden value="#{productoController.producto.id}"/>
                 </div>
             </h:form>
-        </p:panel>
-    </ui:define>
-</ui:composition>
+</ui:component>

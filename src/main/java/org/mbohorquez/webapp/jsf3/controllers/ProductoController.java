@@ -1,7 +1,6 @@
 package org.mbohorquez.webapp.jsf3.controllers;
 
 import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.inject.Model;
 import jakarta.enterprise.inject.Produces;
 import jakarta.faces.application.FacesMessage;
@@ -41,6 +40,7 @@ public class ProductoController {
     @PostConstruct
     public void init() {
         this.listado = service.listar();
+        producto = new Producto();
     }
 
     @Produces
@@ -61,16 +61,14 @@ public class ProductoController {
         return service.listar();
     }*/
 
-    @Produces
-    @Model
+//    @Produces
+//    @Model
     public Producto producto() {
-        if (producto == null) {
-            producto = new Producto();
-            Optional.ofNullable(id)
-                    .filter(i -> i > 0)
-                    .flatMap(service::porId)
-                    .ifPresent(p -> producto = p);
-        }
+        producto = new Producto();
+        Optional.ofNullable(id)
+                .filter(i -> i > 0)
+                .flatMap(service::porId)
+                .ifPresent(p -> producto = p);
         return producto;
         /*this.producto = new Producto();
         if (id != null && id > 0) {
@@ -87,12 +85,12 @@ public class ProductoController {
         return service.listarCategorias();
     }
 
-    public String editar(Long id) {
+    public void editar(Long id) {
         this.id = id;
-        return "form.xhtml";
+        producto();
     }
 
-    public String guardar() {
+    public void guardar() {
         System.out.println(producto);
         if (producto.getId() != null && producto.getId() > 0) {
             facesContext.addMessage(null, new FacesMessage(String.format(bundle.getString("producto.mensaje.editar"), producto.getNombre())));
@@ -101,7 +99,7 @@ public class ProductoController {
         }
         service.guardar(producto);
         listado = service.listar();
-        return "index.xhtml";
+        producto = new Producto();
     }
 
     public void eliminar(Producto producto) {
@@ -113,6 +111,11 @@ public class ProductoController {
 
     public void buscar() {
         this.listado = service.buscarPorNombre(this.textoBuscar);
+    }
+
+    public void cerrarDialogo() {
+        System.out.println("cerrando la ventana de diálogo! ......");
+        producto = new Producto();
     }
 
     public Long getId() {
@@ -137,5 +140,13 @@ public class ProductoController {
 
     public void setTextoBuscar(String textoBuscar) {
         this.textoBuscar = textoBuscar;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }
